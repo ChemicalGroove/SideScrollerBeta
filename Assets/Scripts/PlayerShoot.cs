@@ -12,7 +12,7 @@ public class PlayerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown("space")){
-			Instantiate(bullet, transform.position);
+			Instantiate(bullet);
 		}
 	}
 }
