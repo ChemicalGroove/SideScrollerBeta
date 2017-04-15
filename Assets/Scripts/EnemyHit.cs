@@ -4,8 +4,12 @@ using System.Collections;
 public class EnemyHit : MonoBehaviour {
 
 	private int hp;
+	public GameObject hpFull;
+	public GameObject hpHalf;
 	// Use this for initialization
 	void Start () {
+		hpFull.active = true;
+		hpHalf.active = false;
 		hp = 2;
 	}
 	
@@ -19,8 +23,12 @@ public class EnemyHit : MonoBehaviour {
 		if (obj.gameObject.tag == "Bullet") {
 			Destroy(obj.gameObject);
 			hp--;
+			hpFull.active = false;
+			hpHalf.active = true;
 			if (hp == 0){
 				Destroy(gameObject);
+				Destroy(hpFull);
+				Destroy(hpHalf);
 			}
 		}
 	}

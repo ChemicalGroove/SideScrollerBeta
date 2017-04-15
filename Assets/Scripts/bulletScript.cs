@@ -10,13 +10,14 @@ public class bulletScript : MonoBehaviour {
 	Vector3 position;
 	// Use this for initialization
 	void Start () {
+		speed = 10f;
 		player = GameObject.FindGameObjectWithTag("Player");
 		position = player.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		position.x += speed;
+		position.x += speed * Time.deltaTime;
 		this.transform.position = position;
 		if (position.x >= 6.25) Destroy(gameObject);
 	}
