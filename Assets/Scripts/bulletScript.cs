@@ -20,14 +20,6 @@ public class bulletScript : MonoBehaviour {
 		this.transform.position = position;
 		if (position.x >= 6.25) Destroy(gameObject);
 	}
-
-	void OnTriggerEnter2D(Collider2D obj) {
-		// If the enemy collided with a bullet
-		if (obj.gameObject.tag == "Enemy") {
-			Destroy(gameObject);
-			Destroy(obj.gameObject);
-		}
-	}
 	/*void OnBecameInvisible() {
 		// Destroy the bullet 
 		Destroy(gameObject);
