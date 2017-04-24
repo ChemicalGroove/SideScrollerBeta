@@ -10,8 +10,14 @@ public class PlayerShoot : MonoBehaviour {
 	private float sTime;
 	private float rTime;
 	
-	private float maxBullet;
-	private float curBullet;
+	private int maxBullet;
+	private int curBullet;
+
+	public GameObject ammoFull;
+	public GameObject ammo2_3;
+	public GameObject ammo1_3;
+	public GameObject ammo0_3;
+	
 	// Use this for initialization
 	void Start () {
 		shot = false;
@@ -25,6 +31,24 @@ public class PlayerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
+		switch (curBullet){
+				case 3:
+					ammo0_3.active = false;
+					ammoFull.active = true;
+					break;
+				case 2:
+					ammoFull.active = false;
+					ammo2_3.active = true;
+					break;
+				case 1:
+					ammo2_3.active = false;
+					ammo1_3.active = true;
+					break;
+				case 0:
+					ammo1_3.active = false;
+					ammo0_3.active = true;
+					break;
+		}
 		if (Input.GetKeyDown("space")){
 			if((time >= rTime && curBullet == maxBullet) || (time >= sTime && curBullet > 0 && curBullet < maxBullet)){
 				Instantiate(bullet);
