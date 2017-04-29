@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class cameraScript : MonoBehaviour {
+public class UImove : MonoBehaviour {
 
-	public float cameraSpeed;
+	public float uiSpeed;
 
 	// Use this for initialization
 	void Start () {
-		cameraSpeed = 1f;
+		uiSpeed = 1f;
 		/*Vector3 position = player.transform.position;
 		this.transform.position = position;*/
 	}
@@ -16,7 +16,7 @@ public class cameraScript : MonoBehaviour {
 	void Update () {
 		if (GameObject.Find("Player1") != null) {
 			Vector3 position = this.transform.position;
-			position.x += cameraSpeed * Time.deltaTime;
+			position.x += uiSpeed * Time.deltaTime;
 			this.transform.position = position;
 		}
 	}

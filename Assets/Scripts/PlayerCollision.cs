@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerCollision : MonoBehaviour {
 
-	private int maxHp;
-	private int hp;
+	public int maxHp;
+	public int hp;
 
 	public GameObject hpFull;
 	public GameObject hp2_3;
@@ -25,11 +25,11 @@ public class PlayerCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 
 	void OnTriggerEnter2D(Collider2D obj) {
-		if (obj.gameObject.tag == "Enemy") {
+		if (obj.gameObject.tag == "Enemy" || obj.gameObject.tag == "enBullet") {
 			hp--;
 			switch (hp){
 				case 2:
@@ -43,7 +43,8 @@ public class PlayerCollision : MonoBehaviour {
 				case 0:
 					hp1_3.active = false;
 					hp0_3.active = true;
-					Destroy(gameObject);
+					//Destroy(gameObject);
+					Time.timeScale = 0;
 					break;
 			}
 			if (hp > 0)	{
@@ -52,6 +53,7 @@ public class PlayerCollision : MonoBehaviour {
 				animationObj.SetTime (1);
 				animationObj.Play("Player Hit");
 			}
+			if (obj.gameObject.tag == "enBullet") Destroy(obj.gameObject);
 		}
 	}
 }

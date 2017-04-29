@@ -5,7 +5,6 @@ public class PlayerShoot : MonoBehaviour {
 	
 	public GameObject bullet;
 
-	private bool shot;
 	private float time;
 	private float sTime;
 	private float rTime;
@@ -17,15 +16,17 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject ammo2_3;
 	public GameObject ammo1_3;
 	public GameObject ammo0_3;
+
+	public AudioSource shoot;
 	
 	// Use this for initialization
 	void Start () {
-		shot = false;
 		time =  0.4f; // Current Interval
 		sTime = 0.4f; // Shooting Interval
 		rTime = 0.7f; // Reload Interval
 		maxBullet = 3;
 		curBullet = maxBullet;
+		shoot = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -51,6 +52,7 @@ public class PlayerShoot : MonoBehaviour {
 		}
 		if (Input.GetKeyDown("space")){
 			if((time >= rTime && curBullet == maxBullet) || (time >= sTime && curBullet > 0 && curBullet < maxBullet)){
+				shoot.Play();
 				Instantiate(bullet);
 				time = Time.deltaTime;
 				curBullet--;
