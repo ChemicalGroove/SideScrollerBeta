@@ -6,6 +6,8 @@ public class pauseScript : MonoBehaviour {
 
 	public GameObject[] pauseObjects;
 	public GameObject[] optionsObjects;
+	public GameObject[] helpObjects;
+	public GameObject[] returnObjects;
 
 	public Slider volumeSlider;
 
@@ -14,8 +16,12 @@ public class pauseScript : MonoBehaviour {
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		optionsObjects = GameObject.FindGameObjectsWithTag("ShowOnOptions");
+		helpObjects = GameObject.FindGameObjectsWithTag("ShowOnHelp");
+		returnObjects = GameObject.FindGameObjectsWithTag("ReturnButton");
 		hidePaused();
 		hideOptions();
+		hideHelp();
+		hideReturn();
 		volumeSlider.value = 1;
 	}
 	
@@ -57,6 +63,16 @@ public class pauseScript : MonoBehaviour {
 	public void optionsControl(){
 		hidePaused();
 		showOptions();
+		showReturn();
+	}
+
+	// HELP BUTTON
+
+	//controls the help menu
+	public void helpControl(){
+		hidePaused();
+		showHelp();
+		showReturn();
 	}
 
 
@@ -73,6 +89,8 @@ public class pauseScript : MonoBehaviour {
 	//return to main pause menu
 	public void returnControl(){
 		hideOptions();
+		hideHelp();
+		hideReturn();
 		showPaused();
 	}
 	// VOLUME SLIDER
@@ -94,6 +112,34 @@ public class pauseScript : MonoBehaviour {
 	//hides objects with ShowOnOptions tag
 	public void hideOptions(){
 		foreach(GameObject g in optionsObjects){
+			g.SetActive(false);
+		}
+	}
+
+	//shows objects with ShowOnHelp tag
+	public void showHelp(){
+		foreach(GameObject g in helpObjects){
+			g.SetActive(true);
+		}
+	}
+
+	//hides objects with ShowOnHelp tag
+	public void hideHelp(){
+		foreach(GameObject g in helpObjects){
+			g.SetActive(false);
+		}
+	}
+
+	//shows objects with ReturnButton tag
+	public void showReturn(){
+		foreach(GameObject g in returnObjects){
+			g.SetActive(true);
+		}
+	}
+
+	//hides objects with ReturnButton tag
+	public void hideReturn(){
+		foreach(GameObject g in returnObjects){
 			g.SetActive(false);
 		}
 	}

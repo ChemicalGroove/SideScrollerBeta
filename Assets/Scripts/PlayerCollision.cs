@@ -25,7 +25,6 @@ public class PlayerCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	void OnTriggerEnter2D(Collider2D obj) {
@@ -44,6 +43,7 @@ public class PlayerCollision : MonoBehaviour {
 					hp1_3.active = false;
 					hp0_3.active = true;
 					//Destroy(gameObject);
+					Debug.Log("X: " + player.transform.position.x);
 					Time.timeScale = 0;
 					break;
 			}
